@@ -32,7 +32,18 @@ Primary KPI: **Active staff minutes per accepted service request**.
 
 ## 4. Measured results
 
-Run `python -m app.study` then open `GET /`. Until a real LLM/Jira/AWS run exists, the dashboard is an **engineering dry-run**. Cells are not final evaluation.
+Dry-run of the mock (scripted minutes, **DERIVED**, not timed staff):
+
+| Metric | Self-service (A) | RAG (B) | Agent (C) |
+|---|---|---|---|
+| Staff minutes / accepted request | 2.0 | — | 3.5 |
+| Accepted count | 9 | 0 | 5 |
+| Coverage (accepted / in-scope) | 0.69 | 0.00 | 0.38 |
+
+On this synthetic set the **form beats the agent** on complete in-policy requests. That is a legitimate outcome. B never writes, so accepted is 0 by design. Reproduce: `python -m app.study` then `GET /`.
+
+Live LLM/Jira/AWS numbers: **NOT MEASURED** until keys exist.
+
 
 ## 5. Economic conclusion
 
