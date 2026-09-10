@@ -1,0 +1,13 @@
+[project]
+name = "he-ai-case-study"
+version = "0.1.0"
+description = "Governed student-service request packaging case study"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115", "pydantic>=2", "uvicorn>=0.30"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]

@@ -1,0 +1,25 @@
+{
+  "claim": "ENGINEERING DRY-RUN. Scripted staff-minute model. Not a measured evaluation. Not realised cash savings.",
+  "retrieved_at": "2026-09-10",
+  "arms": {
+    "self_service": {
+      "accepted": 9,
+      "staff_minutes_per_accepted": 2.0,
+      "staff_minutes_per_case": 4.75,
+      "coverage_accepted_over_inscope": 0.69
+    },
+    "rag": {
+      "accepted": 0,
+      "staff_minutes_per_accepted": null,
+      "staff_minutes_per_case": 10.88,
+      "coverage_accepted_over_inscope": 0.0
+    },
+    "agent": {
+      "accepted": 5,
+      "staff_minutes_per_accepted": 3.5,
+      "staff_minutes_per_case": 6.78,
+      "coverage_accepted_over_inscope": 0.38
+    }
+  },
+  "honest_read": "On this synthetic dry-run the form beats the agent on minutes per accepted complete request. Agent value is concentrated in write+verify and in stopping restricted/conflict cases. Do not treat these numbers as organisational KPIs."
+}

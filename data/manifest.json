@@ -1,0 +1,77 @@
+{
+  "institution": "The University of Melbourne",
+  "study_positioning": "Independent Higher Education AI Engineering case study using public institutional pages and synthetic student-service cases. Not commissioned work. Not a production university deployment. Not evidence of staff adoption or realised savings.",
+  "cohort": "Domestic and general coursework students using published MyTimetable / study-plan guidance. Melbourne Medical School and Melbourne Business School are not modelled as distinct processes. Graduate research and Law Masters EAF exceptions are treated as out-of-channel.",
+  "retrieved_at": "2026-09-10",
+  "license_note": "Excerpts only, attributed to the University of Melbourne. Pages remain the university's copyright. Not a full-page mirror.",
+  "sources": [
+    {
+      "id": "taf",
+      "title": "Timetabling Assistance Form",
+      "url": "https://students.unimelb.edu.au/course-admin/class-timetable/timetabling-assistance-form",
+      "file": "sources/taf.md",
+      "page_modified": "2026-07-29",
+      "workflow": "timetable",
+      "student_group": "coursework",
+      "authority": "operational_guidance",
+      "limitations": "Login-gated TAF submit URL is not used. AAP/health/personal-circumstances categories are recorded as restricted, not automated."
+    },
+    {
+      "id": "swap",
+      "title": "Make changes to your class timetable",
+      "url": "https://students.unimelb.edu.au/course-admin/class-timetable/swap-to-available-or-full-classes",
+      "file": "sources/swap.md",
+      "page_modified": "2026-02-25",
+      "workflow": "timetable",
+      "student_group": "coursework",
+      "authority": "operational_guidance",
+      "limitations": "Does not include live MyTimetable class inventory."
+    },
+    {
+      "id": "enrol",
+      "title": "Enrolling in subjects",
+      "url": "https://students.unimelb.edu.au/course-admin/enrolling-in-subjects",
+      "file": "sources/enrol.md",
+      "page_modified": "2026-09-01",
+      "workflow": "enrolment",
+      "student_group": "coursework",
+      "authority": "operational_guidance",
+      "limitations": "Visa, HELP/fees, leave, and deferral mentions are tagged restricted and are not acted on."
+    },
+    {
+      "id": "eaf",
+      "title": "Enrolment assistance",
+      "url": "https://students.unimelb.edu.au/course-admin/enrolment-assistance",
+      "file": "sources/eaf.md",
+      "page_modified": "2026-08-14",
+      "workflow": "enrolment",
+      "student_group": "coursework",
+      "authority": "operational_guidance",
+      "limitations": "EAF portal itself is authenticated and is not called. Faculty exceptions (FBE Week 3, BLAW10001) are treated as conflict/stop rules."
+    },
+    {
+      "id": "mpf1294",
+      "title": "Enrolment and Timetabling Policy (MPF1294)",
+      "url": "https://policy.unimelb.edu.au/MPF1294/",
+      "file": "sources/mpf1294.md",
+      "page_modified": "2022-12-22",
+      "version": "19",
+      "effective": "2022-12-22",
+      "workflow": "both",
+      "student_group": "all_students_policy",
+      "authority": "policy",
+      "limitations": "Short excerpts only. Special-circumstances withdrawal and visa/COE clauses are out of agent scope."
+    },
+    {
+      "id": "syn_adversarial",
+      "title": "Synthetic adversarial fixture",
+      "url": "synthetic://eval/indirect-injection",
+      "file": "sources/syn_adversarial.md",
+      "page_modified": "2026-09-10",
+      "workflow": "security",
+      "student_group": "none",
+      "authority": "synthetic_fixture",
+      "limitations": "Not institutional knowledge. Used only to test that retrieved text cannot authorise tools."
+    }
+  ]
+}
