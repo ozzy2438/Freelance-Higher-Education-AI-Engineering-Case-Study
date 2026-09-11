@@ -42,7 +42,7 @@ Dry-run of the mock (scripted minutes, **DERIVED**, not timed staff):
 
 On this synthetic set the **form beats the agent** on complete in-policy requests. That is a legitimate outcome. B never writes, so accepted is 0 by design. Reproduce: `python -m app.study` then `GET /`.
 
-Live LLM/Jira/AWS numbers: **NOT MEASURED** until keys exist.
+Live LLM/Jira/AWS numbers: Jira and AWS **NOT MEASURED**. OpenAI `gpt-5-nano` summary cost on this 16-case B/C pass: **USD 0.00050 OBSERVED** (13 calls, cached across arms).
 
 
 ## 5. Economic conclusion

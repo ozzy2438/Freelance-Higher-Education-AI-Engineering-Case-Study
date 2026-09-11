@@ -30,7 +30,14 @@ def student(x_student_id: str | None) -> str:
 
 @app.get("/health")
 def health():
-    return {"ok": True, "chunks": len(CHUNKS), "claim": CLAIM}
+    from app.llm import enabled, model_name, session
+
+    return {
+        "ok": True,
+        "chunks": len(CHUNKS),
+        "claim": CLAIM,
+        "llm": {"enabled": enabled(), "model": model_name() if enabled() else None, "session": session},
+    }
 
 
 @app.post("/runs")

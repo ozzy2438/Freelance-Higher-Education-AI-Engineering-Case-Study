@@ -228,6 +228,13 @@ def build_package(text: str, form: dict | None, arm: str) -> Package:
         dest = None
     elif not dest and not missing and not conflict:
         status = Status.FORM_READY
+    if arm in ("rag", "agent"):
+        from app.llm import propose_summary
+
+        llm = propose_summary(text, [r.quote for r in refs])
+        trace["llm"] = llm.get("usage")
+        if llm.get("summary"):
+            summary = llm["summary"]
     pkg = Package(
         category=cat,
         summary=summary,

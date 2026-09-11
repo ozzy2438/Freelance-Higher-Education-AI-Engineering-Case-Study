@@ -7,11 +7,14 @@ from pathlib import Path
 from app.controls import build_package
 from app.models import Arm, CLAIM, Status
 from app import store, workflow
+from app import llm as llm_mod
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "cases_dev.json"
 
 
 def run_study(simulate_approval: bool = True) -> dict:
+    llm_mod.session.update(calls=0, prompt_tokens=0, completion_tokens=0, usd=0.0, model=None)
+    llm_mod._cache.clear()
     cases = json.loads(DATA.read_text())["cases"]
     cx = store.connect()
     rows = []
@@ -48,6 +51,8 @@ def run_study(simulate_approval: bool = True) -> dict:
                     "hash": pkg.package_hash[:10],
                     "idor_blocked": None if idor is None else idor["blocked"],
                     "write": write,
+                    "llm_usd": (pkg.trace.get("llm") or {}).get("usd"),
+                    "llm_cache": (pkg.trace.get("llm") or {}).get("cache"),
                 }
             )
     by_arm: dict[str, list] = defaultdict(list)
@@ -74,6 +79,7 @@ def run_study(simulate_approval: bool = True) -> dict:
     out = {
         "claim": CLAIM,
         "kpi_note": "Primary KPI uses accepted requests only AND is reported next to coverage so abstention cannot silently look like productivity.",
+        "llm": dict(llm_mod.session),
         "arms": {a.value: rollup(a.value) for a in Arm},
         "rows": rows,
     }
@@ -121,7 +127,7 @@ th{{background:#f4f4f4}}
 <tr><td>Coverage (accepted / in-scope)</td><td>{cell('self_service','coverage_accepted_over_inscope')}</td><td>{cell('rag','coverage_accepted_over_inscope')}</td><td>{cell('agent','coverage_accepted_over_inscope')}</td></tr>
 <tr><td>Escalations / incomplete / abstain</td><td>{cell('self_service','escalation')}</td><td>{cell('rag','escalation')}</td><td>{cell('agent','escalation')}</td></tr>
 </table>
-<p class="muted">Minutes are a published scripted model, not timed staff. RAG accepted count is 0 by design (no writes). Values labelled OBSERVED only as dry-run telemetry of this mock; they are not organisational KPIs.</p>
+<p class="muted">Minutes are a published scripted model, not timed staff. RAG accepted count is 0 by design (no writes). LLM summaries on B/C: model <code>{(data.get('llm') or {}).get('model') or 'off'}</code>, calls {(data.get('llm') or {}).get('calls', 0)}, cost USD {round((data.get('llm') or {}).get('usd') or 0, 6)} (OBSERVED token bill). Staff minutes remain DERIVED. Not organisational KPIs.</p>
 <h2>Where the agent should not win</h2>
 <p>Complete in-policy swap/self-enrol cases should favour the form. Mixed visa/AAP requests must stop. FBE Week-3 vs generic late-enrolment must abstain. Ticket reads are owner-scoped in code.</p>
 <h2>Case log</h2>

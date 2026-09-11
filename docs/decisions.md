@@ -22,3 +22,10 @@ Append-only. Supervisor review (five models) directed this slice.
 - Scripted staff minutes, labelled dry-run.
 - Report minutes/accepted **and** coverage **and** minutes/all cases.
 - Do not convert minutes to dollars.
+
+## 2026-09-11 — OpenAI nano for B/C summaries only
+
+- Model `gpt-5-nano` (cheapest list price). Key in `.env`, never committed.
+- Code still owns classify, fields, routing, approval, destinations.
+- LLM drafts a grounded summary after the scope gate. Restricted/out-of-scope and arm A skip the API.
+- Identical ticket+quotes reuse one cached call (B and C share).
