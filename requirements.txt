@@ -1,0 +1,4 @@
+fastapi>=0.115
+pydantic>=2
+uvicorn>=0.30
+openai>=1.50

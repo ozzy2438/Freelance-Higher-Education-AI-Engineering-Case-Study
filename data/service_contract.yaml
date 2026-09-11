@@ -1,0 +1,30 @@
+# Explicitly synthetic service-desk contract
+# Not the University of Melbourne's ticketing system.
+# Jira Service Management, if connected later, is a sandbox surrogate only.
+
+name: MockStudentServiceDesk
+destinations_allowlist:
+  - mock://desk/taf
+  - mock://desk/eaf
+required_fields:
+  taf:
+    - subject_code
+    - issue_type
+    - class_type
+    - preferred_time
+  eaf:
+    - subject_code
+    - action
+  eaf_late_enrol:
+    - subject_code
+    - action
+    - coordinator_approval
+states:
+  - created
+  - verified
+  - unknown
+  - rejected
+idempotency: hash(run_id + destination + package_hash)
+note: >
+  Creating a ticket proves persistence in this mock, not human acceptance
+  by university staff. Identity headers are simulated.

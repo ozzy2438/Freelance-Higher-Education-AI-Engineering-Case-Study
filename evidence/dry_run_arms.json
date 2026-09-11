@@ -1,0 +1,30 @@
+{
+  "claim": "ENGINEERING DRY-RUN staff minutes. LLM token cost is OBSERVED.",
+  "retrieved_at": "2026-09-11",
+  "llm": {
+    "model": "gpt-5-nano",
+    "calls": 13,
+    "prompt_tokens": 3982,
+    "completion_tokens": 748,
+    "usd": 0.0004983,
+    "label": "OBSERVED"
+  },
+  "arms": {
+    "self_service": {
+      "accepted": 9,
+      "staff_minutes_per_accepted": 2.0,
+      "coverage_accepted_over_inscope": 0.69
+    },
+    "rag": {
+      "accepted": 0,
+      "staff_minutes_per_accepted": null,
+      "coverage_accepted_over_inscope": 0.0
+    },
+    "agent": {
+      "accepted": 5,
+      "staff_minutes_per_accepted": 3.5,
+      "coverage_accepted_over_inscope": 0.38
+    }
+  },
+  "honest_read": "Form still beats the agent on scripted minutes per accepted complete request. Nano summaries did not change routing, approval, or writes. Restricted cases never called the API."
+}
